@@ -1,0 +1,11 @@
+    {
+        "band_name":"BTS",
+        "img_src":"./assets/BTS.jpg",
+        "stops":[
+            {"stop_date":"Oct-24-2021", "city":"Live Stream"},
+            {"stop_date":"Nov-27-2021", "city":"Inglewood, CA, US"},
+            {"stop_date":"Nov-28-2021", "city":"Inglewood, CA, US"},
+            {"stop_date":"Dec-01-2021", "city":"Inglewood, CA, US"},
+            {"stop_date":"Dec-02-2021", "city":"Inglewood, CA, US"}
+            ]
+    }
