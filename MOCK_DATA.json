@@ -1,6 +1,6 @@
     {
         "band_name":"BTS",
-        "img_src":"./assets/BTS.jpg",
+        "img_src":"/bandtracker/assets/BTS.jpg",
         "stops":[
             {"stop_date":"Oct-24-2021", "city":"Live Stream"},
             {"stop_date":"Nov-27-2021", "city":"Inglewood, CA, US"},
