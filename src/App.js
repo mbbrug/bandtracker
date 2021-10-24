@@ -1,4 +1,4 @@
-//import logo from './logo.svg';
+import logo from './logo.svg';
 import React, { useState, useEffect } from 'react';
 import TourTable from './components/tourtable.jsx';
 import DiscoTable from './components/discotable.jsx';
@@ -9,20 +9,20 @@ require("es6-promise").polyfill();
 require("isomorphic-fetch");
 
 function App() {
-  const [tourdata, setTourData] = useState([]);
-  const [discodata, setDiscoData] = useState([]);
+  const [tourdata, setTourData] = useState({});
+  const [discodata, setDiscoData] = useState({});
 
   const handleClick = (e) => {
     e.preventDefault();
 
-    fetch('./MOCK_DATA.json')
+    fetch('/bandtracker/MOCK_DATA.json')
       .then(res => res.json())
       .then((result) => {setTourData(result)})
       .catch((error) => {
         console.log(error)
       });
 
-      fetch('./MOCK_DISCO.json')
+      fetch('/bandtracker/MOCK_DISCO.json')
       .then(res => res.json())
       .then((result) => {setDiscoData(result)})
       .catch((error) => {
@@ -34,28 +34,23 @@ function App() {
 
   return (
     <React.Fragment>
-      <div className="container">
-        <div className="row">
-          <div className="col p-3">
-            <div class="input-group mb-3">
-              <button class="btn btn-outline-secondary" type="button" 
-              id="button-addon1" onClick={handleClick}>Submit</button>
-              <input type="text" class="form-control" placeholder="Search for a band..."></input>
+      <nav className="navbar bg-dark navbar-nav">
+          <img src={logo} width="50" height="50" className="navbar-brand" alt="" />
+          <h2 className="title-text navbar-brand">Bandtracker</h2>
+          <form className="form-inline">
+            <div className="input-group nav-item">
+              <button className="btn btn-outline-secondary nav-item" type="button" onClick={handleClick}>Submit</button>
+              <input type="text" className="form-control" placeholder="Search for a band..."></input>
             </div>
-          </div>
-        </div>
-      </div>
+          </form>
+      </nav>
 
       <BandImage img_src = {img_src} band_name = {band_name}/>
 
       <div className="container">
         <div className="row">
-          <div className="col p-3">
             <TourTable tourdata = {tourdata} />
-          </div>
-          <div className="col p-3">
             <DiscoTable discodata = {discodata} />
-          </div>
         </div>
       </div>
     </React.Fragment>

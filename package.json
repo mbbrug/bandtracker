@@ -1,5 +1,6 @@
 {
   "name": "bandtracker",
+  "homepage": "https://mbbrug.github.io/bandtracker/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
