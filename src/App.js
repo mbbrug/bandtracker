@@ -1,28 +1,46 @@
 import logo from './logo.svg';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import TourTable from './components/tourtable.jsx';
 import DiscoTable from './components/discotable.jsx';
 import BandImage from './components/bandimage.jsx';
 import './App.css';
 
+
 require("es6-promise").polyfill();
 require("isomorphic-fetch");
+
+const discoBaseURL = "https://cb361.herokuapp.com/fetch/"
+const artistBaseURL = "https://rest.bandsintown.com/artists/"
+//const appid = "e0aff8acc8630f7bebc28b007ae6e32c"
 
 function App() {
   const [tourdata, setTourData] = useState({});
   const [discodata, setDiscoData] = useState({});
+  const [artistdata, setArtistData] = useState({});
 
-  const handleClick = (e) => {
+  const handleClick = async (e) => {
     e.preventDefault();
+    var inputVal = document.getElementById("searchInput").value;
+    console.log(process.env);
 
-    fetch('/bandtracker/MOCK_DATA.json')
+    // fetch artist data
+    await fetch(artistBaseURL+inputVal+'/?app_id='+process.env.REACT_APP_BANDSINTOWNID)
+    .then(res => res.json())
+    .then((result) => {setArtistData(result)})
+    .catch((error) => {
+      console.log(error)
+    });
+
+    //fetch event data
+    await fetch('/bandtracker/MOCK_DATA.json')
       .then(res => res.json())
       .then((result) => {setTourData(result)})
       .catch((error) => {
         console.log(error)
       });
 
-      fetch('/bandtracker/MOCK_DISCO.json')
+    //fetch discography data - service provided by project team member
+    await fetch(discoBaseURL+inputVal)
       .then(res => res.json())
       .then((result) => {setDiscoData(result)})
       .catch((error) => {
@@ -30,7 +48,7 @@ function App() {
       });
   };
 
-  const {band_name, img_src, stops} = tourdata
+  //const {band_name, img_src, stops} = tourdata
 
   return (
     <React.Fragment>
@@ -40,12 +58,12 @@ function App() {
           <form className="form-inline">
             <div className="input-group nav-item">
               <button className="btn btn-outline-secondary nav-item" type="button" onClick={handleClick}>Submit</button>
-              <input type="text" className="form-control" placeholder="Search for a band..."></input>
+              <input id="searchInput" type="text" className="form-control" placeholder="Search for a band..."></input>
             </div>
           </form>
       </nav>
 
-      <BandImage img_src = {img_src} band_name = {band_name}/>
+      <BandImage img_src = {artistdata.thumb_url} band_name = {artistdata.name}/>
 
       <div className="container">
         <div className="row">
