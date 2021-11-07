@@ -11,7 +11,6 @@ require("isomorphic-fetch");
 
 const discoBaseURL = "https://cb361.herokuapp.com/fetch/"
 const artistBaseURL = "https://rest.bandsintown.com/artists/"
-//const appid = "e0aff8acc8630f7bebc28b007ae6e32c"
 
 function App() {
   const [tourdata, setTourData] = useState({});
