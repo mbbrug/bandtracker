@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/bandtracker/static/css/main.63d4c4ab.chunk.css",
-    "main.js": "/bandtracker/static/js/main.2adc0a75.chunk.js",
-    "main.js.map": "/bandtracker/static/js/main.2adc0a75.chunk.js.map",
+    "main.js": "/bandtracker/static/js/main.bce0af02.chunk.js",
+    "main.js.map": "/bandtracker/static/js/main.bce0af02.chunk.js.map",
     "runtime-main.js": "/bandtracker/static/js/runtime-main.494db5b2.js",
     "runtime-main.js.map": "/bandtracker/static/js/runtime-main.494db5b2.js.map",
     "static/css/2.8c0e6b67.chunk.css": "/bandtracker/static/css/2.8c0e6b67.chunk.css",
@@ -21,6 +21,6 @@
     "static/css/2.8c0e6b67.chunk.css",
     "static/js/2.02519a5c.chunk.js",
     "static/css/main.63d4c4ab.chunk.css",
-    "static/js/main.2adc0a75.chunk.js"
+    "static/js/main.bce0af02.chunk.js"
   ]
 }
