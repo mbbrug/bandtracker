@@ -15,7 +15,7 @@ class TourTable extends Component {
                         <tr><th>Tour Date</th><th>Location</th></tr>
                     </thead>
                     <tbody>
-                        {this.props.tourdata.map((stop)=>{
+                        {this.props.tourdata.slice(0, 15).map((stop)=>{
                             return(<tr key={stop.id}><td>{new Date(stop.datetime).toDateString()}</td><td>{stop.venue.location}</td></tr>)
                         })}
                     </tbody>
