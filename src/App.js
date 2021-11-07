@@ -30,7 +30,7 @@ function App() {
     });
 
     //fetch event data
-    await fetch('/bandtracker/MOCK_DATA.json')
+    await fetch(artistBaseURL+inputVal+'/events?app_id='+process.env.REACT_APP_BANDSINTOWNID)
       .then(res => res.json())
       .then((result) => {setTourData(result)})
       .catch((error) => {
