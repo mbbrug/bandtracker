@@ -20,7 +20,6 @@ function App() {
   const handleClick = async (e) => {
     e.preventDefault();
     var inputVal = document.getElementById("searchInput").value;
-    console.log(process.env);
 
     // fetch artist data
     await fetch(artistBaseURL+inputVal+'/?app_id='+process.env.REACT_APP_BANDSINTOWNID)
