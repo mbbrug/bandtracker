@@ -17,7 +17,7 @@ function App() {
   const [artistdata, setArtistData] = useState({});
 
   async function fetch_artist(inputVal){
-    // fetch artist data
+    // fetch artist data from bandsintown artist API
     await fetch(artistBaseURL+inputVal+'/?app_id='+process.env.REACT_APP_BANDSINTOWNID)
     .then(res => res.json())
     .then((result) => {setArtistData(result)})
@@ -27,7 +27,7 @@ function App() {
   }
 
   async function fetch_event(inputVal){
-    // fetch event data
+    // fetch event data from bandsintown event API
     await fetch(artistBaseURL+inputVal+'/events?app_id='+process.env.REACT_APP_BANDSINTOWNID)
       .then(res => res.json())
       .then((result) => {setTourData(result)})
@@ -46,9 +46,10 @@ function App() {
       });
   }
 
-  const navClicktoParent = async (e) => {
+  const handleClick = async (e) => {
     e.preventDefault();
-    var inputVal = document.getElementById("searchInput").value;
+    // inputVal takenfrom the SearchInput input element inside the nav
+    var inputVal = document.getElementById("searchInput").value; 
 
     fetch_artist(inputVal); // fills artistdata
     fetch_event(inputVal); // fills eventdata
