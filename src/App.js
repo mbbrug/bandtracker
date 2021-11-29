@@ -5,7 +5,6 @@ import DiscoTable from './components/discotable.jsx';
 import BandImage from './components/bandimage.jsx';
 import './App.css';
 
-
 require("es6-promise").polyfill();
 require("isomorphic-fetch");
 
@@ -37,14 +36,7 @@ function App() {
     });
   }
 
-
-  const handleClick = async (e) => {
-    e.preventDefault();
-    var inputVal = document.getElementById("searchInput").value;
-
-    fetch_artist(inputVal); // fills artistdata
-    fetch_event(inputVal); // fills eventdata
-
+  async function fetch_disco(inputVal){
     //fetch discography data - service provided by project team member
     await fetch(discoBaseURL+inputVal)
       .then(res => res.json())
@@ -52,8 +44,16 @@ function App() {
       .catch((error) => {
         console.log(error)
       });
-  };
+  }
 
+  const handleClick = async (e) => {
+    e.preventDefault();
+    var inputVal = document.getElementById("searchInput").value;
+
+    fetch_artist(inputVal); // fills artistdata
+    fetch_event(inputVal); // fills eventdata
+    fetch_disco(inputVal); // fills discography
+  };
 
   return (
     <React.Fragment>
