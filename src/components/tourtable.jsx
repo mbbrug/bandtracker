@@ -3,6 +3,7 @@ import React, {Component} from "react";
 class TourTable extends Component {
 
     render(){
+        console.log(this.props.tourdata)
         if(Object.keys(this.props.tourdata).length>0) {
         
         return(

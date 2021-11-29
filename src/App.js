@@ -18,32 +18,35 @@ function App() {
 
   async function fetch_artist(inputVal){
     // fetch artist data from bandsintown artist API
-    await fetch(artistBaseURL+inputVal+'/?app_id='+process.env.REACT_APP_BANDSINTOWNID)
-    .then(res => res.json())
-    .then((result) => {setArtistData(result)})
-    .catch((error) => {
-      console.log(error)
-    });
+    const res = await fetch(artistBaseURL+inputVal+'/?app_id='+process.env.REACT_APP_BANDSINTOWNID);
+    if (res.ok) {
+      let json = await res.json()
+      setArtistData(json)
+    } else {
+      setArtistData({})
+    }
   }
 
   async function fetch_event(inputVal){
     // fetch event data from bandsintown event API
-    await fetch(artistBaseURL+inputVal+'/events?app_id='+process.env.REACT_APP_BANDSINTOWNID)
-      .then(res => res.json())
-      .then((result) => {setTourData(result)})
-      .catch((error) => {
-        console.log(error)
-    });
+    const res = await fetch(artistBaseURL+inputVal+'/events?app_id='+process.env.REACT_APP_BANDSINTOWNID);
+    if (res.ok) {
+      let json = await res.json()
+      setTourData(json)
+    } else {
+      setTourData({})
+    }
   }
 
   async function fetch_disco(inputVal){
     //fetch discography data - service provided by project team member
-    await fetch(discoBaseURL+inputVal)
-      .then(res => res.json())
-      .then((result) => {setDiscoData(result)})
-      .catch((error) => {
-        console.log(error)
-      });
+    const res = await fetch(discoBaseURL+inputVal);
+    if (res.ok) {
+      let json = await res.json()
+      setDiscoData(json)
+    } else {
+      setDiscoData({})
+    }
   }
 
   const handleClick = async (e) => {

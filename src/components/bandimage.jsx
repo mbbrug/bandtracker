@@ -4,7 +4,7 @@ import './BandImage.css';
 class BandImage extends React.Component {
     
     render() { 
-        if(this.props.img_src !== undefined) {
+        if(this.props.img_src !== undefined && this.props.band_name!==undefined) {
             return(
                 <div className="container">
                     <div className="row">
