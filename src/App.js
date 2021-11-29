@@ -46,7 +46,7 @@ function App() {
       });
   }
 
-  const handleClick = async (e) => {
+  const navClicktoParent = async (e) => {
     e.preventDefault();
     var inputVal = document.getElementById("searchInput").value;
 
@@ -66,8 +66,7 @@ function App() {
               <input id="searchInput" type="text" className="form-control" placeholder="Search for a band..."></input>
             </div>
           </form>
-      </nav>
-
+      </nav> 
       <BandImage img_src = {artistdata.thumb_url} band_name = {artistdata.name}/>
 
       <div className="container">

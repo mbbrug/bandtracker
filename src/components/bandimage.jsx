@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './BandImage.css';
 
 class BandImage extends React.Component {
+    
     render() { 
         if(this.props.img_src !== undefined) {
             return(
