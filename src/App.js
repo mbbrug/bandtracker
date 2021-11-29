@@ -17,7 +17,7 @@ function App() {
   const [discodata, setDiscoData] = useState({});
   const [artistdata, setArtistData] = useState({});
 
-  function fetch_artist(){
+  async function fetch_artist(inputVal){
     // fetch artist data
     await fetch(artistBaseURL+inputVal+'/?app_id='+process.env.REACT_APP_BANDSINTOWNID)
     .then(res => res.json())
@@ -27,20 +27,23 @@ function App() {
     });
   }
 
-
-  const handleClick = async (e) => {
-    e.preventDefault();
-    var inputVal = document.getElementById("searchInput").value;
-
-    fetch_artist();
-
-    //fetch event data
+  async function fetch_event(inputVal){
+    // fetch event data
     await fetch(artistBaseURL+inputVal+'/events?app_id='+process.env.REACT_APP_BANDSINTOWNID)
       .then(res => res.json())
       .then((result) => {setTourData(result)})
       .catch((error) => {
         console.log(error)
-      });
+    });
+  }
+
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+    var inputVal = document.getElementById("searchInput").value;
+
+    fetch_artist(inputVal); // fills artistdata
+    fetch_event(inputVal); // fills eventdata
 
     //fetch discography data - service provided by project team member
     await fetch(discoBaseURL+inputVal)
@@ -51,7 +54,6 @@ function App() {
       });
   };
 
-  //const {band_name, img_src, stops} = tourdata
 
   return (
     <React.Fragment>
