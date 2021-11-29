@@ -12,7 +12,12 @@ require("isomorphic-fetch");
 const discoBaseURL = "https://cb361.herokuapp.com/fetch/"
 const artistBaseURL = "https://rest.bandsintown.com/artists/"
 
-function fetch_artist(){
+function App() {
+  const [tourdata, setTourData] = useState({});
+  const [discodata, setDiscoData] = useState({});
+  const [artistdata, setArtistData] = useState({});
+
+  function fetch_artist(){
     // fetch artist data
     await fetch(artistBaseURL+inputVal+'/?app_id='+process.env.REACT_APP_BANDSINTOWNID)
     .then(res => res.json())
@@ -20,20 +25,14 @@ function fetch_artist(){
     .catch((error) => {
       console.log(error)
     });
-}
+  }
 
-
-
-function App() {
-  const [tourdata, setTourData] = useState({});
-  const [discodata, setDiscoData] = useState({});
-  const [artistdata, setArtistData] = useState({});
 
   const handleClick = async (e) => {
     e.preventDefault();
     var inputVal = document.getElementById("searchInput").value;
 
-
+    fetch_artist();
 
     //fetch event data
     await fetch(artistBaseURL+inputVal+'/events?app_id='+process.env.REACT_APP_BANDSINTOWNID)
